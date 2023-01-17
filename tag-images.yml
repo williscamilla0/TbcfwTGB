@@ -5,7 +5,6 @@ name: Tag Docker Version
 on:
   workflow_dispatch:
     inputs:
-      version:
         description: 'The version to tag docker images'
         required: true
         type: string
@@ -41,7 +40,6 @@ jobs:
           DOCKER_NAME: novu/api
           IMAGE_TAG: ${{ github.sha }}
           GH_ACTOR: ${{ github.actor }}
-          GH_PASSWORD: ${{ secrets.GH_PACKAGES }}
           DOCKER_VERSION: ${{ inputs.version }}
         run: |
           docker pull ghcr.io/$REGISTRY_OWNER/$DOCKER_NAME:prod
